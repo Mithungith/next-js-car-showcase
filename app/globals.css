@@ -11,6 +11,13 @@
   font-family: "Manrope", sans-serif;
 }
 
+.center-img-angle{
+  position:absolute;
+  top:50%!important;
+  left:50%!important;
+  transform:translate(-50%,-30%);
+}
+
 /* START: General styles */
 .max-width {
   @apply max-w-[1440px] mx-auto;

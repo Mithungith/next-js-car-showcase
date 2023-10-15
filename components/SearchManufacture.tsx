@@ -20,10 +20,10 @@ const SearchManufacture = ({ manufacture, setManufacture }: SearchManufacturePro
                             alt="Car Logo"
                         />
                     </Combobox.Button>
-                    <Combobox.Input className="search-manufacturer__input" placeholder="Volkswagen" displayValue={(manufacture: string) => manufacture} onChange={(e) => setQuery(e.target.value)} />
-                    <Transition as={Fragment} leave="transition ease-in duration-100" leaveFrom="opacity-100" leaveTo="opacity-0" afterLeave={() => setQuery("")}>
+                    <Combobox.Input className="search-manufacturer__input" placeholder="Volkswagen" displayValue={(manufacture: string) => manufacture} onChange={(e) => setQuery(e.target.value)} value={query}/>
+                    <Transition as={Fragment} leave="transition ease-in duration-100" leaveFrom="opacity-100" leaveTo="opacity-0">
                         <Combobox.Options>
-                            {filteredManufactures.length === 0 && query !== "" ? (
+                            {/* {filteredManufactures.length === 0 && query !== "" ? (
                                 <Combobox.Option value={query} className="search-manufacturer__option">
                                     Create "{query}"
                                 </Combobox.Option>
@@ -37,7 +37,15 @@ const SearchManufacture = ({ manufacture, setManufacture }: SearchManufacturePro
                                     </Combobox.Option>
                                 ))
                             )
-                        }
+                        } */}
+                        {filteredManufactures.map((item)=>(
+                            <Combobox.Option key={item} className={({active}) => `
+                            relative search-manufacturer__option
+                            ${active ? 'bg-primary-blue text-white':'text-grey-900'}
+                            `} value={item}>
+                                {item}
+                            </Combobox.Option>
+                        ))}
                         </Combobox.Options>
                     </Transition>
                 </div>
